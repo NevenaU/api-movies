@@ -13,10 +13,17 @@ class MoviesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $movies = Movie::all();
+        //filtriranje filmova na osnovu imena
+        $title = $request->query('title', '');
+        $movies = Movie::search($title)->get();
         return response()->json($movies);
+
+
+        //
+        /* $movies = Movie::all();
+        return response()->json($movies); */
     }
 
     /**
