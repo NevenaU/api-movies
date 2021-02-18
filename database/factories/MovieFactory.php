@@ -30,6 +30,5 @@ class MovieFactory extends Factory
             'releaseDate'  =>  $this->faker->date($format = 'Y-m-d', $max = 'now'),
             'genre'  =>  $this->genres[random_int(0, 3)],
         ];
-        
     }
 }
