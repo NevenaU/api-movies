@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MoviesController;
@@ -26,3 +27,8 @@ Route::post("/movies", [MoviesController::class, 'store']);
 Route::get("/movies/{id}", [MoviesController::class, 'show']);
 Route::put("/movies/{id}", [MoviesController::class, 'update']);
 Route::delete("/movies/{id}", [MoviesController::class, 'destroy']);
+
+Route::post('register', [ AuthController::class, 'register' ]);//->middleware('guest:api');
+Route::post('login', [ AuthController::class, 'login' ]);//->middleware('guest:api');
+Route::post('logout', [ AuthController::class, 'logout' ]);//>middleware('auth:api');
+Route::get('me', [ AuthController::class, 'me' ]);//->middleware('auth:api');
